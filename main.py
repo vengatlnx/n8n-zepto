@@ -13,7 +13,6 @@ from datetime import datetime
 import requests
 import sys
 import platform
-import subprocess
 
 # Configure logging
 log_filename = f"zepto_orders_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
@@ -422,8 +421,6 @@ async def create_order(order: OrderRequest):
 
 if __name__ == "__main__":
      logger.info("Starting Zepto Order Automation Server")
-     result = subprocess.run(['ip', 'a'], capture_output=True, text=True, check=True)
-     print("IP address 'ip a':\n", result.stdout)
      import uvicorn
      uvicorn.run(app, host="0.0.0.0", port=8000)
 
